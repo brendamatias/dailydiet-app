@@ -7,9 +7,9 @@ type Props = TouchableOpacityProps & {
     type?: MealTypeStyleProps;
 }
 
-export default function MealCard({ title, hour, type = 'PRIMARY' }: Props) {
+export default function MealCard({ title, hour, type = 'PRIMARY', ...rest }: Props) {
     return (
-        <Container>
+        <Container {...rest}>
             <Content>
                 <Hour>{hour}</Hour>
                 <Divisor />

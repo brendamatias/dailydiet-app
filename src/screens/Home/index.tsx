@@ -1,4 +1,5 @@
-import { Image, SectionList, Text, View } from "react-native";
+import { Image, SectionList } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { Container, Content, EmptyList, Header, ListTitle, MealText } from "./styles";
 import { Avatar } from "@components/Avatar";
 import logo from '@assets/logo.png';
@@ -7,7 +8,8 @@ import { Button } from "@components/Button";
 import { useState } from "react";
 import MealCard from "@components/MealCard";
 
-export default function Home() {
+export default function Meal() {
+    const navigation = useNavigation();
     const [meals, setMeals] = useState([
       {
         title: '12.08.22',
@@ -53,6 +55,10 @@ export default function Home() {
       },
     ]);
 
+    function handleMeal(meal: string) {
+        navigation.navigate('meal', { meal })
+    }
+
     return (
         <Container>
             <Header>
@@ -71,7 +77,7 @@ export default function Home() {
                     sections={meals}
                     keyExtractor={item => item.title}
                     renderItem={({ item }) => (
-                        <MealCard title={item.title} hour={item.hour} />
+                        <MealCard title={item.title} hour={item.hour} onPress={() => handleMeal(item.title)} />
                     )}
                     renderSectionHeader={({ section }) => (
                         <ListTitle>

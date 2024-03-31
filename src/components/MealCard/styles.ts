@@ -23,6 +23,7 @@ export const Content = styled.View`
     flex-direction: row;
     align-items: center;
     gap: 12px;
+    flex: 1;
 `;
 
 export const Divisor = styled.View`
@@ -44,13 +45,16 @@ export const Title = styled.Text`
     font-size: ${theme.FONT_SIZE.MD}px;
     color: ${theme.COLORS.GRAY_200};
     font-family: ${theme.FONT_FAMILY.REGULAR};
+    flex: 1;
   `}
 `;
 
 export const Status = styled.View<Props>`
     ${({ theme, type }) => css`
         background-color: ${type === 'PRIMARY' ? theme.COLORS.RED_MID : theme.COLORS.GREEN_MID};
+        min-width: 14px;
         width: 14px;
+        min-height: 14px;
         height: 14px;
         border-radius: 100%;
     `}
